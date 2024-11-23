@@ -23,15 +23,14 @@ class ImpaktfullUiFigmaSync {
 
     // Base theme
     final allColors = ColorParser.parse(file: file, themeName: themeName);
-    final textStyles =
+    final allTextStyles =
         await TextStyleParser.getTextStyles(figmaConfig, figmaService, file);
-    final allTextStyles = textStyles.expand((e) => e.textStyles).toList();
 
     return ImpaktfullUiFigmaTheme(
       name: file.name,
       key: figmaConfig.figmaFileKey,
       colors: allColors,
-      textStyles: textStyles,
+      textStyles: allTextStyles,
       components: ComponentParser.parse(
         file,
         allTextStyles,

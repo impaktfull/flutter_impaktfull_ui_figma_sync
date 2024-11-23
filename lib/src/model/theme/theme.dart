@@ -1,12 +1,12 @@
 import 'package:impaktfull_ui_figma_sync/src/model/theme/components/color.dart';
 import 'package:impaktfull_ui_figma_sync/src/model/theme/components/component.dart';
-import 'package:impaktfull_ui_figma_sync/src/model/theme/components/text_style_group.dart';
+import 'package:impaktfull_ui_figma_sync/src/model/theme/components/text_style.dart';
 
 class ImpaktfullUiFigmaTheme {
   final String name;
   final String key;
   final List<ImpaktfullUiFigmaColor> colors;
-  final List<ImpaktfullUiFigmaTextStyleGroup> textStyles;
+  final List<ImpaktfullUiFigmaTextStyle> textStyles;
   final List<ImpaktfullUiFigmaComponent> components;
 
   const ImpaktfullUiFigmaTheme({

@@ -7,7 +7,6 @@ import 'package:impaktfull_ui_figma_sync/src/model/figma_config.dart';
 import 'package:impaktfull_ui_figma_sync/src/model/theme/components/color.dart';
 import 'package:impaktfull_ui_figma_sync/src/model/theme/components/component_text_style.dart';
 import 'package:impaktfull_ui_figma_sync/src/model/theme/components/text_style.dart';
-import 'package:impaktfull_ui_figma_sync/src/model/theme/components/text_style_group.dart';
 import 'package:impaktfull_ui_figma_sync/src/parser/color_parser.dart';
 import 'package:impaktfull_ui_figma_sync/src/service/figma_service.dart';
 import 'package:impaktfull_ui_figma_sync/src/util/extension/list_extension.dart';
@@ -15,7 +14,7 @@ import 'package:impaktfull_ui_figma_sync/src/util/extension/list_extension.dart'
 class TextStyleParser {
   const TextStyleParser._();
 
-  static Future<List<ImpaktfullUiFigmaTextStyleGroup>> getTextStyles(
+  static Future<List<ImpaktfullUiFigmaTextStyle>> getTextStyles(
     FigmaConfig figmaConfig,
     FigmaService figmaService,
     FigmaFileResponse file,
@@ -23,7 +22,7 @@ class TextStyleParser {
     final styleIds = file.styles.keys;
     final nodeResponse =
         await figmaService.getNodes(figmaConfig.figmaFileKey, styleIds);
-    final textStyles = nodeResponse.nodes.entries
+    return nodeResponse.nodes.entries
         .map((entry) {
           final id = entry.key;
           final node = entry.value.document;
@@ -34,23 +33,6 @@ class TextStyleParser {
           );
         })
         .nonNulls
-        .toList();
-    final groups = <String, List<ImpaktfullUiFigmaTextStyle>>{};
-    for (final style in textStyles) {
-      if (groups.containsKey(style.groupName)) {
-        groups[style.groupName]!.add(style);
-      } else {
-        groups[style.groupName] = [style];
-      }
-    }
-
-    return groups.entries
-        .map(
-          (entry) => ImpaktfullUiFigmaTextStyleGroup(
-            name: entry.key,
-            textStyles: entry.value,
-          ),
-        )
         .toList();
   }
 

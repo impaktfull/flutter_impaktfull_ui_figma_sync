@@ -10,9 +10,6 @@ Future<void> main(List<String> arguments) async {
   print('Text styles:');
   for (final textStyle in theme.textStyles) {
     print(' - ${textStyle.name}');
-    for (final style in textStyle.textStyles) {
-      print('   - ${style.styleName}');
-    }
   }
 
   print('Components:');

@@ -14,11 +14,20 @@ class FigmaConfig {
     this.logLevel = LogLevel.normal,
   });
 
-  static FigmaConfig parseFromArgs(List<String> args) => FigmaConfig(
+  static FigmaConfig? parseFromArgs(List<String> args) {
+    if (args.isEmpty) return null;
+    try {
+      return FigmaConfig(
         figmaFileKey: args[0],
         personalAccessToken: args[1],
-        logLevel: args.contains('--verbose') ? LogLevel.verbose : LogLevel.normal,
+        logLevel:
+            args.contains('--verbose') ? LogLevel.verbose : LogLevel.normal,
       );
+    } catch (e) {
+      FigmaSyncLogger.log('Error parsing figma config from args: $e');
+      return null;
+    }
+  }
 
   static FigmaConfig envs() {
     final pubspecFile = File('pubspec.yaml');
@@ -51,7 +60,9 @@ class FigmaConfig {
     return FigmaConfig(
       figmaFileKey: figmaFileKey,
       personalAccessToken: personalAccessToken,
-      logLevel: _getValue(figmaSyncConfig, 'log_level') == 'verbose' ? LogLevel.verbose : LogLevel.normal,
+      logLevel: _getValue(figmaSyncConfig, 'log_level') == 'verbose'
+          ? LogLevel.verbose
+          : LogLevel.normal,
     );
   }
 
@@ -67,7 +78,8 @@ class FigmaConfig {
       }
     }
     if (envKey == null) return null;
-    FigmaSyncLogger.log('Key `$key`` not found in pubspec.yaml (checking environment variables `$envKey`)');
+    FigmaSyncLogger.log(
+        'Key `$key`` not found in pubspec.yaml (checking environment variables `$envKey`)');
     final value = Platform.environment[envKey];
     if (value == null || value.isEmpty) {
       return null;

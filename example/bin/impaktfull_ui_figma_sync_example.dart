@@ -24,7 +24,8 @@ Future<void> main(List<String> arguments) async {
     }
     print('   text styles:');
     for (final textStyle in component.textStyles) {
-      print('   - ${textStyle.name}: ${textStyle.textStyle?.name} - ${textStyle.color?.color.toHex()}');
+      print(
+          '   - ${textStyle.name}: ${textStyle.textStyle?.name} - ${textStyle.color?.color.toHex()}');
     }
   }
 }

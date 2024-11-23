@@ -11,8 +11,14 @@ import 'package:impaktfull_ui_figma_sync/src/util/extension/list_extension.dart'
 
 class ColorParser {
   const ColorParser._();
-  static List<ImpaktfullUiFigmaColor> parse(FigmaFileResponse file) {
-    final colorsFrame = FigmaSyncParser.getFigmaSyncFrame(file, parseType: ParseType.colors);
+  static List<ImpaktfullUiFigmaColor> parse({
+    required FigmaFileResponse file,
+    String? themeName,
+  }) {
+    final colorsFrame = FigmaSyncParser.getFigmaSyncFrame(
+      file,
+      parseType: ParseType.colors,
+    );
     return colorsFrame.children.map((e) => parseComponentColor(e)).toList();
   }
 

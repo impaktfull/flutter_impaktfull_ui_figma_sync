@@ -12,6 +12,7 @@ class ImpaktfullUiFigmaSync {
 
   Future<ImpaktfullUiFigmaTheme> sync({
     FigmaConfig? config,
+    String? themeName,
     LogLevel logLevel = LogLevel.normal,
   }) async {
     FigmaSyncLogger.setLogLevel(logLevel);
@@ -19,10 +20,10 @@ class ImpaktfullUiFigmaSync {
     final figmaApi = FigmaApi(config: figmaConfig);
     final figmaService = FigmaService(api: figmaApi);
     final file = await figmaService.getFile(figmaConfig.figmaFileKey);
-    final textStyles = await TextStyleParser.getTextStyles(figmaConfig, figmaService, file);
 
     // Base theme
-    final allColors = ColorParser.parse(file);
+    final allColors = ColorParser.parse(file: file, themeName: themeName);
+    final textStyles = await TextStyleParser.getTextStyles(figmaConfig, figmaService, file);
     final allTextStyles = textStyles.expand((e) => e.textStyles).toList();
 
     return ImpaktfullUiFigmaTheme(

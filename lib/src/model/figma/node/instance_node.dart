@@ -9,7 +9,8 @@ class InstanceFrameNode extends FigmaNodeWithChildren {
     required super.children,
   });
 
-  static InstanceFrameNode fromJson(Map<String, dynamic> json) => InstanceFrameNode(
+  static InstanceFrameNode fromJson(Map<String, dynamic> json) =>
+      InstanceFrameNode(
         id: FigmaNode.parseId(json),
         name: FigmaNode.parseName(json),
         type: FigmaNode.parseType(json),

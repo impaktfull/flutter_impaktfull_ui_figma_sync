@@ -17,7 +17,8 @@ class FigmaConfig {
   static FigmaConfig parseFromArgs(List<String> args) => FigmaConfig(
         figmaFileKey: args[0],
         personalAccessToken: args[1],
-        logLevel: args.contains('--verbose') ? LogLevel.verbose : LogLevel.normal,
+        logLevel:
+            args.contains('--verbose') ? LogLevel.verbose : LogLevel.normal,
       );
 
   static FigmaConfig envs() {
@@ -53,7 +54,9 @@ class FigmaConfig {
     return FigmaConfig(
       figmaFileKey: figmaFileKey,
       personalAccessToken: personalAccessToken,
-      logLevel: _getValue(figmaSyncConfig, 'log_level') == 'verbose' ? LogLevel.verbose : LogLevel.normal,
+      logLevel: _getValue(figmaSyncConfig, 'log_level') == 'verbose'
+          ? LogLevel.verbose
+          : LogLevel.normal,
     );
   }
 
@@ -67,7 +70,8 @@ class FigmaConfig {
       return pubspecValue;
     }
     if (envKey == null) return null;
-    FigmaSyncLogger.log('Key `$key`` not found in pubspec.yaml (checking environment variables `$envKey`)');
+    FigmaSyncLogger.log(
+        'Key `$key`` not found in pubspec.yaml (checking environment variables `$envKey`)');
     final value = Platform.environment[envKey];
     if (value == null || value.isEmpty) {
       return null;

@@ -21,7 +21,8 @@ class TextStyleParser {
     FigmaFileResponse file,
   ) async {
     final styleIds = file.styles.keys;
-    final nodeResponse = await figmaService.getNodes(figmaConfig.figmaFileKey, styleIds);
+    final nodeResponse =
+        await figmaService.getNodes(figmaConfig.figmaFileKey, styleIds);
     final textStyles = nodeResponse.nodes.entries
         .map((entry) {
           final id = entry.key;
@@ -90,7 +91,8 @@ class TextStyleParser {
       throw Exception('Text node expected: Found ${node.runtimeType}');
     }
     if (node.styles?.text != null && textStyles != null) {
-      final style = textStyles.firstWhereOrNull((e) => e.id == node.styles!.text);
+      final style =
+          textStyles.firstWhereOrNull((e) => e.id == node.styles!.text);
       if (style != null) {
         return style;
       }

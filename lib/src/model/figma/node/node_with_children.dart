@@ -20,7 +20,10 @@ abstract class FigmaNodeWithChildren extends FigmaNode {
   static List<FigmaNode>? parseChildren(Map<String, dynamic> json) {
     final children = json['children'] as List<dynamic>?;
     if (children == null) return null;
-    return children.map((child) => parseChild(child as Map<String, dynamic>)).nonNulls.toList();
+    return children
+        .map((child) => parseChild(child as Map<String, dynamic>))
+        .nonNulls
+        .toList();
   }
 
   static FigmaNode? parseChild(Map<String, dynamic> json) {
@@ -50,7 +53,8 @@ abstract class FigmaNodeWithChildren extends FigmaNode {
 
   FigmaNode? getOptionalChild(String name) {
     if (children.isEmpty) return null;
-    return children.firstWhereOrNull((e) => e.name.toLowerCase() == name.toLowerCase());
+    return children
+        .firstWhereOrNull((e) => e.name.toLowerCase() == name.toLowerCase());
   }
 
   FigmaNodeWithChildren getChildWithChildren(String name) {
@@ -61,10 +65,12 @@ abstract class FigmaNodeWithChildren extends FigmaNode {
 
   FigmaNodeWithChildren? getOptionalChildWithChildren(String name) {
     if (children.isEmpty) return null;
-    final child = children.firstWhereOrNull((e) => e.name.toLowerCase() == name.toLowerCase());
+    final child = children
+        .firstWhereOrNull((e) => e.name.toLowerCase() == name.toLowerCase());
     if (child == null) return null;
     if (child is! FigmaNodeWithChildren) {
-      throw Exception('Child with name `$name` is not a node with children: ${child.runtimeType}');
+      throw Exception(
+          'Child with name `$name` is not a node with children: ${child.runtimeType}');
     }
     return child;
   }

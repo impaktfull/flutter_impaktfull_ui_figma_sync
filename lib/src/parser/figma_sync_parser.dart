@@ -23,15 +23,18 @@ class FigmaSyncParser {
       if (child is! FigmaNodeWithChildren) continue;
       availableFrames.add(child.name.toLowerCase());
     }
-    final hasAllRequiredFrames = requiredFrames.every((frame) => availableFrames.contains(frame));
+    final hasAllRequiredFrames =
+        requiredFrames.every((frame) => availableFrames.contains(frame));
     if (hasAllRequiredFrames) return true;
-    print('Missing frames for `${node.name}`: ${requiredFrames.where((frame) => !availableFrames.contains(frame))}');
+    print(
+        'Missing frames for `${node.name}`: ${requiredFrames.where((frame) => !availableFrames.contains(frame))}');
     return false;
   }
 
   static FigmaNodeWithChildren getFigmaSyncFrame(
     FigmaFileResponse file, {
     ParseType? parseType,
+    String? themeName,
   }) {
     final figmaSyncKeys = [
       'figma_sync',
@@ -40,7 +43,13 @@ class FigmaSyncParser {
       'impaktfull figma sync',
     ];
     final figmaSyncCanvas = file.documents.children.firstWhereOrNull(
-      (element) => figmaSyncKeys.any((key) => element.name.toLowerCase().endsWith(key)),
+      (element) => figmaSyncKeys.any((key) {
+        final name = element.name.toLowerCase();
+        if (themeName != null) {
+          return name.endsWith('$themeName $key');
+        }
+        return name.endsWith(key);
+      }),
     );
     if (figmaSyncCanvas == null) {
       throw Exception('No figma sync canvas node found');

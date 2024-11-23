@@ -35,7 +35,8 @@ class ComponentParser {
   ) {
     final components = document.children.where((e) {
       if (e is! FigmaNodeWithChildren) return false;
-      return e.children.any((element) => element.name.toLowerCase() == _figmaSyncKey);
+      return e.children
+          .any((element) => element.name.toLowerCase() == _figmaSyncKey);
     });
     if (components.isEmpty) return [];
     return components
@@ -59,9 +60,13 @@ class ComponentParser {
     if (!FigmaSyncParser.isFigmaSyncComponentFrame(figmaSyncFrame)) return null;
     return ImpaktfullUiFigmaComponent(
       name: node.name,
-      colors: parseColors(figmaSyncFrame.getChildWithChildren('colors').getChildWithChildren('items')),
+      colors: parseColors(figmaSyncFrame
+          .getChildWithChildren('colors')
+          .getChildWithChildren('items')),
       textStyles: parseTextStyles(
-        figmaSyncFrame.getChildWithChildren('textStyles').getChildWithChildren('items'),
+        figmaSyncFrame
+            .getChildWithChildren('textStyles')
+            .getChildWithChildren('items'),
         textStyles,
         colors,
       ),
@@ -70,7 +75,10 @@ class ComponentParser {
 
   static List<ImpaktfullUiFigmaColor> parseColors(FigmaNode node) {
     if (node is! FigmaNodeWithChildren) return [];
-    return node.children.map((child) => ColorParser.parseComponentColor(child)).nonNulls.toList();
+    return node.children
+        .map((child) => ColorParser.parseComponentColor(child))
+        .nonNulls
+        .toList();
   }
 
   static List<ImpaktfullUiFigmaComponentTextStyle> parseTextStyles(

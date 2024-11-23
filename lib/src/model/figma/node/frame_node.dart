@@ -20,7 +20,10 @@ class FigmaFrameNode extends FigmaNodeWithChildren {
         name: FigmaNode.parseName(json),
         type: FigmaNode.parseType(json),
         children: FigmaNodeWithChildren.parseChildren(json) ?? [],
-        fills: (json['fills'] as List<dynamic>).map((e) => FigmaFill.fromJson(e as Map<String, dynamic>)).toList(),
-        backgroundColor: FigmaColor.fromJson(json['backgroundColor'] as Map<String, dynamic>),
+        fills: (json['fills'] as List<dynamic>)
+            .map((e) => FigmaFill.fromJson(e as Map<String, dynamic>))
+            .toList(),
+        backgroundColor: FigmaColor.fromJson(
+            json['backgroundColor'] as Map<String, dynamic>),
       );
 }

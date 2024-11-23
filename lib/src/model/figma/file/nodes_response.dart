@@ -25,10 +25,11 @@ class FigmaNodesResponse {
       lastModified: DateTime.parse(json['lastModified'] as String),
       version: json['version'] as String,
       role: FigmaFileRole.fromString(json['role'] as String),
-      nodes: (json['nodes'] as Map<String, dynamic>).map((key, value) => MapEntry(
-            key,
-            FigmaNodeResponse.fromJson(value as Map<String, dynamic>),
-          )),
+      nodes:
+          (json['nodes'] as Map<String, dynamic>).map((key, value) => MapEntry(
+                key,
+                FigmaNodeResponse.fromJson(value as Map<String, dynamic>),
+              )),
     );
   }
 }

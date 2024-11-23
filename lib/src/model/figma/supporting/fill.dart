@@ -18,8 +18,10 @@ class FigmaFill {
   static FigmaFill fromJson(Map<String, dynamic> json) => FigmaFill(
         blendMode: FigmaBlendMode.fromJson(json['blendMode'] as String),
         type: FigmaFillType.fromJson(json['type'] as String),
-        color: FigmaColor.fromJsonOptional(json['color'] as Map<String, dynamic>?),
-        boundVariables: FigmaBoundVariable.fromJsonOptional(json['boundVariables'] as Map<String, dynamic>?),
+        color:
+            FigmaColor.fromJsonOptional(json['color'] as Map<String, dynamic>?),
+        boundVariables: FigmaBoundVariable.fromJsonOptional(
+            json['boundVariables'] as Map<String, dynamic>?),
       );
 }
 
@@ -32,7 +34,8 @@ enum FigmaFillType {
   const FigmaFillType(this.value);
 
   static FigmaFillType fromJson(String json) {
-    final fillType = FigmaFillType.values.firstWhereOrNull((e) => e.value == json);
+    final fillType =
+        FigmaFillType.values.firstWhereOrNull((e) => e.value == json);
     if (fillType == null) {
       throw Exception('Invalid fill type: $json');
     }
@@ -48,7 +51,8 @@ enum FigmaBlendMode {
   const FigmaBlendMode(this.value);
 
   static FigmaBlendMode fromJson(String json) {
-    final blendMode = FigmaBlendMode.values.firstWhereOrNull((e) => e.value == json);
+    final blendMode =
+        FigmaBlendMode.values.firstWhereOrNull((e) => e.value == json);
     if (blendMode == null) {
       throw Exception('Invalid blend mode: $json');
     }

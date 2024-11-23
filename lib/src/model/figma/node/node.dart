@@ -18,7 +18,6 @@ abstract class FigmaNode {
 
   static String parseName(Map<String, dynamic> json) => json['name'] as String;
 
-  static NodeType? parseType(Map<String, dynamic> json) => NodeType.fromString(json['type'] as String);
-
-  
+  static NodeType? parseType(Map<String, dynamic> json) =>
+      NodeType.fromString(json['type'] as String);
 }

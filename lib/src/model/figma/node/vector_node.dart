@@ -14,8 +14,11 @@ abstract class FigmaVectorNode extends FigmaNode {
   });
 
   static List<FigmaFill> parseFills(Map<String, dynamic> json) =>
-      (json['fills'] as List<dynamic>).map((e) => FigmaFill.fromJson(e as Map<String, dynamic>)).toList();
+      (json['fills'] as List<dynamic>)
+          .map((e) => FigmaFill.fromJson(e as Map<String, dynamic>))
+          .toList();
 
   static FigmaColor? parseBackgroundColor(Map<String, dynamic> json) =>
-      FigmaColor.fromJsonOptional(json['backgroundColor'] as Map<String, dynamic>?);
+      FigmaColor.fromJsonOptional(
+          json['backgroundColor'] as Map<String, dynamic>?);
 }

@@ -9,7 +9,8 @@ class FigmaDocumentNode extends FigmaNodeWithChildren {
     required super.children,
   });
 
-  static FigmaDocumentNode fromJson(Map<String, dynamic> json) => FigmaDocumentNode(
+  static FigmaDocumentNode fromJson(Map<String, dynamic> json) =>
+      FigmaDocumentNode(
         id: FigmaNode.parseId(json),
         name: FigmaNode.parseName(json),
         type: FigmaNode.parseType(json),

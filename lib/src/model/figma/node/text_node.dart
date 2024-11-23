@@ -23,8 +23,10 @@ class FigmaTextNode extends FigmaVectorNode {
         fills: FigmaVectorNode.parseFills(json),
         backgroundColor: FigmaVectorNode.parseBackgroundColor(json),
         characters: json['characters'] as String,
-        style: FigmaTextStyle.fromJsonOptional(json['style'] as Map<String, dynamic>?),
-        styles: FigmaTextStyles.fromJsonOptional(json['styles'] as Map<String, dynamic>?),
+        style: FigmaTextStyle.fromJsonOptional(
+            json['style'] as Map<String, dynamic>?),
+        styles: FigmaTextStyles.fromJsonOptional(
+            json['styles'] as Map<String, dynamic>?),
       );
 }
 

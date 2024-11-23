@@ -9,7 +9,8 @@ class FigmaVariableAlias {
     required this.id,
   });
 
-  static FigmaVariableAlias fromJson(Map<String, dynamic> json) => FigmaVariableAlias(
+  static FigmaVariableAlias fromJson(Map<String, dynamic> json) =>
+      FigmaVariableAlias(
         type: json['type'] as String,
         id: json['id'] as String,
       );

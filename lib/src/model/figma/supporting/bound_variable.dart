@@ -14,7 +14,9 @@ class FigmaBoundVariable {
     return FigmaBoundVariable.fromJson(json);
   }
 
-  static FigmaBoundVariable fromJson(Map<String, dynamic> json) => FigmaBoundVariable(
-        color: FigmaVariableAlias.fromJson(json['color'] as Map<String, dynamic>),
+  static FigmaBoundVariable fromJson(Map<String, dynamic> json) =>
+      FigmaBoundVariable(
+        color:
+            FigmaVariableAlias.fromJson(json['color'] as Map<String, dynamic>),
       );
 }

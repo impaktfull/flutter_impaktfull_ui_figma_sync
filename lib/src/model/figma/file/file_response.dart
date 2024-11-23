@@ -27,7 +27,8 @@ class FigmaFileResponse {
       lastModified: DateTime.parse(json['lastModified'] as String),
       version: json['version'] as String,
       role: FigmaFileRole.fromString(json['role'] as String),
-      documents: FigmaDocumentNode.fromJson(json['document'] as Map<String, dynamic>),
+      documents:
+          FigmaDocumentNode.fromJson(json['document'] as Map<String, dynamic>),
       styles: json['styles'] as Map<String, dynamic>,
     );
   }

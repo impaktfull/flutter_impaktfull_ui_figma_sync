@@ -10,7 +10,8 @@ class FigmaNodeResponse {
 
   factory FigmaNodeResponse.fromJson(Map<String, dynamic> json) {
     return FigmaNodeResponse(
-      document: FigmaNodeWithChildren.parseChild(json['document'] as Map<String, dynamic>)!,
+      document: FigmaNodeWithChildren.parseChild(
+          json['document'] as Map<String, dynamic>)!,
     );
   }
 }

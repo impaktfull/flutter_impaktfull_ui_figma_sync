@@ -10,7 +10,8 @@ class FigmaRectangleNode extends FigmaVectorNode {
     required super.backgroundColor,
   });
 
-  static FigmaRectangleNode fromJson(Map<String, dynamic> json) => FigmaRectangleNode(
+  static FigmaRectangleNode fromJson(Map<String, dynamic> json) =>
+      FigmaRectangleNode(
         id: FigmaNode.parseId(json),
         name: FigmaNode.parseName(json),
         type: FigmaNode.parseType(json),

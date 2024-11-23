@@ -21,13 +21,13 @@ This is a tool to sync the impaktfull ui from figma to the codebase.
 
 ## Implemented
 
-- Nothing yes
+- [x] Sync theme colors
+- [x] Sync text styles
+- [x] Sync components
 
 ## TODO
 
-- [ ] Sync theme colors
 - [ ] Sync dimensions
-- [ ] Sync text styles
 - [ ] Sync shadows
 - [ ] Sync icons
 - [ ] Pass a node id to sync only that node

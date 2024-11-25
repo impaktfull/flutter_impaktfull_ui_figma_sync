@@ -10,5 +10,6 @@ extension ImpaktfullUiFigmaColorListExtensions on List<ImpaktfullUiFigmaColor> {
     return color;
   }
 
-  ImpaktfullUiFigmaColor? getOptional(String name) => firstWhereOrNull((e) => e.name == name);
+  ImpaktfullUiFigmaColor? getOptional(String name) =>
+      firstWhereOrNull((e) => e.name == name);
 }

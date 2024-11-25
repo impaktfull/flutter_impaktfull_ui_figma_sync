@@ -1,7 +1,8 @@
 import 'package:impaktfull_ui_figma_sync/impaktfull_ui_figma_sync.dart';
 import 'package:impaktfull_ui_figma_sync/src/util/extension/list_extension.dart';
 
-extension ImpaktfullUiFigmaTextStyleListExtensions on List<ImpaktfullUiFigmaTextStyle> {
+extension ImpaktfullUiFigmaTextStyleListExtensions
+    on List<ImpaktfullUiFigmaTextStyle> {
   ImpaktfullUiFigmaTextStyle get(String name) {
     final color = getOptional(name);
     if (color == null) {
@@ -10,5 +11,6 @@ extension ImpaktfullUiFigmaTextStyleListExtensions on List<ImpaktfullUiFigmaText
     return color;
   }
 
-  ImpaktfullUiFigmaTextStyle? getOptional(String name) => firstWhereOrNull((e) => e.name == name);
+  ImpaktfullUiFigmaTextStyle? getOptional(String name) =>
+      firstWhereOrNull((e) => e.name == name);
 }

@@ -23,11 +23,13 @@ class FigmaColor {
     return FigmaColor.fromJson(json);
   }
 
-  String toHex() {
+  String toHex() => '#${toHexWithoutHash()}';
+
+  String toHexWithoutHash() {
     final rHex = (r * 255).round().toRadixString(16).padLeft(2, '0');
     final gHex = (g * 255).round().toRadixString(16).padLeft(2, '0');
     final bHex = (b * 255).round().toRadixString(16).padLeft(2, '0');
     final aHex = (a * 255).round().toRadixString(16).padLeft(2, '0');
-    return '#$aHex$rHex$gHex$bHex';
+    return '$aHex$rHex$gHex$bHex';
   }
 }

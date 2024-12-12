@@ -1,8 +1,7 @@
 name: impaktfull_ui_figma_sync
-description: A sample command-line application.
-version: 1.0.0
+description: A dart package to sync figma design variables to flutter/dart
+version: 0.0.1
 repository: https://github.com/impaktfull/flutter_impaktfull_ui_figma_sync
-publish_to: none
 
 environment:
   sdk: ^3.1.3
